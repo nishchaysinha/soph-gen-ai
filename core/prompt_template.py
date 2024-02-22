@@ -10,7 +10,7 @@ def init_prompt(file_structure_list):
         determine the correct commands necessary to execute the project.
         Only give the bash commands necessary to execute the project in the json format below.
         Ensure these are consistent commands that can be run in a bash terminal.
-        json format is "bash_commands": ["command_1, command_2, command_3"], "loop_run": "True(Always True in first instance to ensure the code runs successfully)"
+        json format is "bash_commands": ["command_1, command_2, command_3"], "loop_run": true(Always true in first instance to ensure the code runs successfully)
         Make Sure the commands are in the order they want to be executed in.
         NOTE: DO NOT ADD EXPLANATIONS TO THE COMMANDS.
         """
@@ -31,7 +31,7 @@ def generate_prompt(response):
 
         Please determine if the code has been run successfully(If yes then loop_run will be set to false) and if not, determine the correct commands necessary to execute the project.
         Only give the bash commands necessary to execute the project in the json format below.
-        json format = "bash_commands": "command_1\ncommand_2\ncommand_3", "loop_run": "True/False"
+        json format = "bash_commands": "command_1\ncommand_2\ncommand_3", "loop_run": true/false
         Make Sure the commands are in the order they want to be executed in. Ensure that you execute the code.
         
         NOTE: DO NOT ADD EXPLANATIONS TO THE COMMANDS.

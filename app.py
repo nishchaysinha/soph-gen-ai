@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import core.llm as llm
 import core.prompt_template as prompt_template
 import utils.filter_json as filter_json
+import random #to manage infinite running time for render
 
 
 load_dotenv()
@@ -11,6 +12,10 @@ load_dotenv()
 app = Flask(__name__)
 GM = llm.GenerativeModel("gemini-pro", os.getenv("GOOGLE_API_KEY"))
 chat = GM.chat_object()
+
+@app.route('/ping')
+def ping():
+    return jsonify({"message": random.randint(1, 100)})
 
 @app.route('/init', methods=['POST'])
 def init():
