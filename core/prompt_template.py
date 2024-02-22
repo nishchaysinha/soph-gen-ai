@@ -12,7 +12,7 @@ def init_prompt(file_structure_list):
         Ensure these are consistent commands that can be run in a bash terminal.
         json format is "bash_commands": ["command_1, command_2, command_3"], "loop_run": true(Always true in first instance to ensure the code runs successfully)
         Make Sure the commands are in the order they want to be executed in.
-        NOTE: DO NOT ADD EXPLANATIONS TO THE COMMANDS.
+        NOTE: DO NOT ADD EXPLANATIONS TO THE COMMANDS. DO NOT ASK FOR SUDO PERMISSION, IF ITS A BINARY PUT IT IN ~/bin
         """
     )
 
@@ -34,7 +34,7 @@ def generate_prompt(response):
         json format = "bash_commands": "command_1\ncommand_2\ncommand_3", "loop_run": true/false
         Make Sure the commands are in the order they want to be executed in. Ensure that you execute the code.
         
-        NOTE: DO NOT ADD EXPLANATIONS TO THE COMMANDS.
+        NOTE: DO NOT ADD EXPLANATIONS TO THE COMMANDS. DO NOT ASK FOR SUDO PERMISSION, IF ITS A BINARY PUT IT IN ~/bin
 
 
         """
