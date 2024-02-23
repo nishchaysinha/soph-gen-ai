@@ -40,6 +40,17 @@ def generate():
     except Exception as e:
         return jsonify({"error": str(e)})
 
+@app.route('/docker', methods=['POST'])
+def docker():
+    try:
+        file_structure = request.json['file_structure']
+        prompt = prompt_template.docker_prompt(str(file_structure))
+        response = chat.send_message(prompt)
+        response_text = filter_json.filter_json(response.text)
+        return jsonify(response_text)
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
 
 
 if __name__ == "__main__":

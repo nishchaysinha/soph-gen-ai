@@ -31,7 +31,7 @@ def generate_prompt(response):
 
         Please determine if the code has been run successfully(If yes then loop_run will be set to false) and if not, determine the correct commands necessary to execute the project.
         Only give the bash commands necessary to execute the project in the json format below.
-        json format = "bash_commands": "command_1\ncommand_2\ncommand_3", "loop_run": true/false
+        json format = "bash_commands": ["command_1, command_2, command_3"], "loop_run": true/false
         Make Sure the commands are in the order they want to be executed in. Ensure that you execute the code.
         
         NOTE: DO NOT ADD EXPLANATIONS TO THE COMMANDS. DO NOT ASK FOR SUDO PERMISSION, IF ITS A BINARY PUT IT IN ~/bin
@@ -41,4 +41,25 @@ def generate_prompt(response):
     )
 
     x = PromptTemplate.format(prompt_template, response_text=response)
+    return x
+
+def docker_prompt(file_structure_list):
+    docker_prompt_template = PromptTemplate.from_template(
+        """
+        The following is the folder structure in the form of a list for a project i am trying to run, 
+
+        {file_structure}
+
+        Please freely determine the correct commands necessary to execute the project in a docker container.
+        WRITE THE DOCKERFILE COMMANDS IN THE JSON FORMAT BELOW. 
+        json format = "docker_file": ["line_1, line_2, line_3"], "loop_run": true/false
+        Make Sure the commands are in the order they want to be executed in. Ensure that you execute the code.
+        
+        NOTE: DO NOT ADD EXPLANATIONS TO THE COMMANDS. DO NOT ASK FOR SUDO PERMISSION, IF ITS A BINARY PUT IT IN ~/bin
+
+
+        """
+    )
+
+    x = PromptTemplate.format(docker_prompt_template, file_structure=file_structure_list)
     return x
